@@ -2,6 +2,7 @@
 from setuptools import setup
 from setuptools.command.develop import develop as _develop
 from setuptools.command.sdist   import sdist   as _sdist
+from setuptools.command.install import install as _install
 
 def install_regexes():
     print('Copying regexes.yaml to package directory...')
@@ -31,6 +32,11 @@ class sdist(_sdist):
     def run(self):
         install_regexes()
         _sdist.run(self)
+
+class install(_install):
+    def run(self):
+        install_regexes()
+        _install.run(self)
 
 setup(
     name='ua-parser',
