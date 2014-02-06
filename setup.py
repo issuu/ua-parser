@@ -55,6 +55,7 @@ setup(
     cmdclass={
         'develop': develop,
         'sdist':   sdist,
+        'install': install,
     },
     classifiers=[
         'Development Status :: 4 - Beta',
