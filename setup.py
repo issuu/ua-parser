@@ -21,12 +21,15 @@ def install_regexes():
     import yaml
     json_dest = yaml_dest.replace('.yaml', '.json')
     regexes = yaml.load(open(yaml_dest))
-    json.dump(regexes, open(json_dest, 'w'))
+    with open(json_dest, "w") as f:
+        json.dump(regexes, f)
+
 
 class develop(_develop):
     def run(self):
         install_regexes()
         _develop.run(self)
+
 
 class sdist(_sdist):
     def run(self):
